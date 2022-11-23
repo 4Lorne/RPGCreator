@@ -1,2 +1,4 @@
-package Model.Weapons;public class Hammer {
+package Model.Weapons;
+
+public class Hammer extends Weapon{
 }

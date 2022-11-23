@@ -1,2 +1,4 @@
-package Model;public class Cleric {
+package Model.Creatures;
+
+public class Cleric extends Player{
 }
