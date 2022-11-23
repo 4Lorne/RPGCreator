@@ -1,6 +1,6 @@
 package Model.Weapons;
 
-public abstract class Weapon {
+public class Weapon {
     private int attackMod;
     private int weight;
 }
