@@ -91,6 +91,12 @@ public class CharacterCreator extends JPanel {
         agility.setFont(new Font("Serif", Font.PLAIN,20));
         baseAttack.setFont(new Font("Serif", Font.PLAIN,20));
 
+        attackModifier.setFont(new Font("Serif", Font.PLAIN,20));
+        weight.setFont(new Font("Serif", Font.PLAIN,20));
+
+        reroll.setFont(new Font("Serif", Font.PLAIN,20));
+        startBattle.setFont(new Font("Serif", Font.PLAIN,20));
+
         //Adding buttons to group
         classSelection.add(warriorSelection);
         classSelection.add(wizardSelection);
@@ -168,5 +174,27 @@ public class CharacterCreator extends JPanel {
         add(agility);
         charAgil.setBounds(600,243,50,20);
         add(charAgil);
+        baseAttack.setBounds(500,230,300,100);
+        add(baseAttack);
+        charBaseAtk.setBounds(600,273,50,20);
+        add(charBaseAtk);
+
+        reroll.setBounds(525,315,100,20);
+        add(reroll);
+
+        weaponStats.setBounds(500,350,400,50);
+        add(weaponStats);
+
+        attackModifier.setBounds(500,400,300,100);
+        add(attackModifier);
+        weapAtkMod.setBounds(630,443,50,20);
+        add(weapAtkMod);
+        weight.setBounds(500,430,300,100);
+        add(weight);
+        weapWeight.setBounds(600,473,50,20);
+        add(weapWeight);
+
+        startBattle.setBounds(500,575,150,20);
+        add(startBattle);
     }
 }
