@@ -21,7 +21,8 @@ public class MainFrame extends JFrame {
         //add(battle,"battle");
 
         //Setting size,close operation, and visibility
-        setSize(1280,720);
+        setSize(720,720);
+        setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }

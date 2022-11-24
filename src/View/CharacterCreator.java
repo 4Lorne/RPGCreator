@@ -6,20 +6,22 @@ import java.awt.*;
 
 public class CharacterCreator extends JPanel {
 
-    private JTextField charName = new JTextField(25);
+    //Character stat text field
+    private JTextField charName = new JTextField(15);
     private JTextField charHp = new JTextField(5);
     private JTextField charDef = new JTextField(5);
     private JTextField charAgil = new JTextField(5);
     private JTextField charBaseAtk = new JTextField(5);
 
+    //Weapon stat text field
     private JTextField weapAtkMod = new JTextField(5);
     private JTextField weapWeight = new JTextField(5);
 
+    //Descriptions for classes and weapons
     private JTextArea classDescription = new JTextArea(5,20);
     private JTextArea weaponDescription = new JTextArea(5,20);
 
     //Labels for all the sections
-
     //Title
     private final JLabel charGen = new JLabel("Character Generator");
 
@@ -58,22 +60,15 @@ public class CharacterCreator extends JPanel {
     private JButton reroll = new JButton("Reroll");
     private JButton startBattle = new JButton("Start Battle");
 
-
-
     //Button groups for radio buttons
     ButtonGroup classSelection = new ButtonGroup();
     ButtonGroup weaponSelection = new ButtonGroup();
 
-    //Constraints
-    GridBagConstraints gc = new GridBagConstraints();
 
     public CharacterCreator(){
-        setLayout(new GridBagLayout());
+        setLayout(null);
 
-        //Distance between elements
-        gc.insets = new Insets(5,5,5,5);
 
-        gc.gridwidth=20;
 
         //Setting font and size of text
         charGen.setFont(new Font("Serif", Font.PLAIN,30));
@@ -82,6 +77,19 @@ public class CharacterCreator extends JPanel {
         charStats.setFont(new Font("Serif", Font.PLAIN,25));
         selectWeapon.setFont(new Font("Serif", Font.PLAIN,25));
         weaponStats.setFont(new Font("Serif", Font.PLAIN,25));
+
+        warriorSelection.setFont(new Font("Serif", Font.PLAIN,20));
+        wizardSelection.setFont(new Font("Serif", Font.PLAIN,20));
+        clericSelection.setFont(new Font("Serif", Font.PLAIN,20));
+
+        daggerSelection.setFont(new Font("Serif", Font.PLAIN,20));
+        swordSelection.setFont(new Font("Serif", Font.PLAIN,20));
+        hammerSelection.setFont(new Font("Serif", Font.PLAIN,20));
+
+        hitPoints.setFont(new Font("Serif", Font.PLAIN,20));
+        defense.setFont(new Font("Serif", Font.PLAIN,20));
+        agility.setFont(new Font("Serif", Font.PLAIN,20));
+        baseAttack.setFont(new Font("Serif", Font.PLAIN,20));
 
         //Adding buttons to group
         classSelection.add(warriorSelection);
@@ -95,15 +103,70 @@ public class CharacterCreator extends JPanel {
         classDescription.setEditable(false);
         weaponDescription.setEditable(false);
 
+        //Main title
+        charGen.setBounds(50,0,300,100);
+        add(charGen);
 
-        gc.gridx = 0;
-        gc.gridy= 0;
+        //Enter name and text box
+        enterName.setBounds(50,50,250,100);
+        add(enterName);
 
-        add(charGen,gc);
+        charName.setBounds(180,95,125,20);
+        add(charName);
 
-        gc.gridx = 2;
-        gc.gridy = 1;
-        add(enterName,gc);
+        //Character type title
+        charType.setBounds(50,100,300,100);
+        add(charType);
 
+
+        //Radio buttons
+        warriorSelection.setBounds(50,180,100,20);
+        add(warriorSelection);
+        wizardSelection.setBounds(50,220,100,20);
+        add(wizardSelection);
+        clericSelection.setBounds(50,260,100,20);
+        add(clericSelection);
+        //Visible while no class is selected
+        selectAClass.setBounds(250,220,100,20);
+        add(selectAClass);
+        //Description
+        classDescription.setBounds(50,300,400,50);
+        add(classDescription);
+
+        //Weapon title
+        selectWeapon.setBounds(50,350,400,50);
+        add(selectWeapon);
+
+        //Radio buttons
+        daggerSelection.setBounds(50,420,100,25);
+        add(daggerSelection);
+        swordSelection.setBounds(50,460,100,25);
+        add(swordSelection);
+        hammerSelection.setBounds(50,500,100,25);
+        add(hammerSelection);
+
+        selectAWeapon.setBounds(250,460,100,20);
+        add(selectAWeapon);
+
+        weaponDescription.setBounds(50,530,400,100);
+        add(weaponDescription);
+
+
+        charStats.setBounds(500,100,300,100);
+        add(charStats);
+
+        hitPoints.setBounds(500,140,300,100);
+        add(hitPoints);
+        charHp.setBounds(600,183,50,20);
+        add(charHp);
+
+        defense.setBounds(500,170,300,100);
+        add(defense);
+        charDef.setBounds(600,213,50,20);
+        add(charDef);
+        agility.setBounds(500,200,300,100);
+        add(agility);
+        charAgil.setBounds(600,243,50,20);
+        add(charAgil);
     }
 }
