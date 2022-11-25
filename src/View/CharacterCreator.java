@@ -10,22 +10,6 @@ public class CharacterCreator extends JPanel {
     //Character stat text field
     private JTextField charName = new JTextField(15);
 
-    public void setCharHp() {
-        this.charHp.setText(Integer.toString(ThreadLocalRandom.current().nextInt(50,100+1)));
-    }
-
-    public void setCharDef() {
-        this.charDef.setText(Integer.toString(ThreadLocalRandom.current().nextInt(50,100+1)));
-    }
-
-    public void setCharAgil() {
-        this.charAgil.setText(Integer.toString(ThreadLocalRandom.current().nextInt(50,100+1)));
-    }
-
-    public void setCharBaseAtk() {
-        this.charBaseAtk.setText(Integer.toString(ThreadLocalRandom.current().nextInt(50,100+1)));
-    }
-
     private JTextField charHp = new JTextField(5);
     private JTextField charDef = new JTextField(5);
     private JTextField charAgil = new JTextField(5);
@@ -149,7 +133,7 @@ public class CharacterCreator extends JPanel {
         clericSelection.setBounds(50,260,100,20);
         add(clericSelection);
         //Visible while no class is selected
-        selectAClass.setBounds(250,220,100,20);
+        selectAClass.setBounds(250,220,100,50);
         add(selectAClass);
         //Description
         classDescription.setBounds(50,300,400,50);
@@ -214,7 +198,26 @@ public class CharacterCreator extends JPanel {
         add(startBattle);
     }
 
+    //Listener for the radio button
+    public void displayImage(ActionListener actionListener){
+        warriorSelection.addActionListener(actionListener);
+        wizardSelection.addActionListener(actionListener);
+        clericSelection.addActionListener(actionListener);
+    }
 
+    //Changes the image when a radio button is selected
+    public void isSelected(){
+        if (warriorSelection.isSelected() == true){
+            selectAClass.setBounds(250,220,200,200);
+            selectAClass.setIcon(new ImageIcon(getClass().getResource("../Images/Warrior.png")));
+        } else if (wizardSelection.isSelected() == true){
+            selectAClass.setIcon(new ImageIcon(getClass().getResource("../Images/Wizard.png")));
+        } else if (clericSelection.isSelected() == true){
+            selectAClass.setIcon(new ImageIcon(getClass().getResource("../Images/Priest.png")));
+        }
+    }
+
+    //Action listeners for when the button is clicked
     public void setReroll(ActionListener actionListener){
         reroll.addActionListener(actionListener);
     }
@@ -223,6 +226,7 @@ public class CharacterCreator extends JPanel {
         startBattle.addActionListener(actionListener);
     }
 
+    //
     public String getCharClass() {
         if (warriorSelection.isSelected() == true) {
             return warriorSelection.getText();
@@ -271,5 +275,21 @@ public class CharacterCreator extends JPanel {
 
     public JTextArea getWeaponDescription() {
         return weaponDescription;
+    }
+
+    public void setCharHp() {
+        this.charHp.setText(Integer.toString(ThreadLocalRandom.current().nextInt(50,100+1)));
+    }
+
+    public void setCharDef() {
+        this.charDef.setText(Integer.toString(ThreadLocalRandom.current().nextInt(50,100+1)));
+    }
+
+    public void setCharAgil() {
+        this.charAgil.setText(Integer.toString(ThreadLocalRandom.current().nextInt(50,100+1)));
+    }
+
+    public void setCharBaseAtk() {
+        this.charBaseAtk.setText(Integer.toString(ThreadLocalRandom.current().nextInt(50,100+1)));
     }
 }

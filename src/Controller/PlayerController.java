@@ -12,6 +12,12 @@ public class PlayerController {
         this.player = player;
         this.charCreator = charCreator;
 
+        //Changes the text to an image when a radio button is selected
+        charCreator.displayImage(e -> {
+            this.charCreator.isSelected();
+        });
+
+        //Randomizes the values in the stat text boxes
         charCreator.setReroll(e -> {
             this.charCreator.setCharHp();
             this.charCreator.setCharDef();
@@ -19,6 +25,7 @@ public class PlayerController {
             this.charCreator.setCharBaseAtk();
         });
 
+        //Creates the character object
         charCreator.startBattle(e -> {
             String name = this.charCreator.getCharName().getText().trim();
             String charClass = this.charCreator.getCharClass();
