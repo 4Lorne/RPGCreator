@@ -1,13 +1,31 @@
 package View;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class CharacterCreator extends JPanel {
-
     //Character stat text field
     private JTextField charName = new JTextField(15);
+
+    public void setCharHp() {
+        this.charHp.setText(Integer.toString(ThreadLocalRandom.current().nextInt(50,100+1)));
+    }
+
+    public void setCharDef() {
+        this.charDef.setText(Integer.toString(ThreadLocalRandom.current().nextInt(50,100+1)));
+    }
+
+    public void setCharAgil() {
+        this.charAgil.setText(Integer.toString(ThreadLocalRandom.current().nextInt(50,100+1)));
+    }
+
+    public void setCharBaseAtk() {
+        this.charBaseAtk.setText(Integer.toString(ThreadLocalRandom.current().nextInt(50,100+1)));
+    }
+
     private JTextField charHp = new JTextField(5);
     private JTextField charDef = new JTextField(5);
     private JTextField charAgil = new JTextField(5);
@@ -67,8 +85,6 @@ public class CharacterCreator extends JPanel {
 
     public CharacterCreator(){
         setLayout(null);
-
-
 
         //Setting font and size of text
         charGen.setFont(new Font("Serif", Font.PLAIN,30));
@@ -196,5 +212,64 @@ public class CharacterCreator extends JPanel {
 
         startBattle.setBounds(500,575,150,20);
         add(startBattle);
+    }
+
+
+    public void setReroll(ActionListener actionListener){
+        reroll.addActionListener(actionListener);
+    }
+
+    public void startBattle(ActionListener actionListener){
+        startBattle.addActionListener(actionListener);
+    }
+
+    public String getCharClass() {
+        if (warriorSelection.isSelected() == true) {
+            return warriorSelection.getText();
+        } else if (wizardSelection.isSelected() == true){
+            return wizardSelection.getText();
+        } else if (clericSelection.isSelected() == true){
+            return clericSelection.getText();
+        } else {
+            return null;
+        }
+    }
+
+
+    //Getters
+    public JTextField getCharName() {
+        return charName;
+    }
+
+    public JTextField getCharHp() {
+        return charHp;
+    }
+
+    public JTextField getCharDef() {
+        return charDef;
+    }
+
+    public JTextField getCharAgil() {
+        return charAgil;
+    }
+
+    public JTextField getCharBaseAtk() {
+        return charBaseAtk;
+    }
+
+    public JTextField getWeapAtkMod() {
+        return weapAtkMod;
+    }
+
+    public JTextField getWeapWeight() {
+        return weapWeight;
+    }
+
+    public JTextArea getClassDescription() {
+        return classDescription;
+    }
+
+    public JTextArea getWeaponDescription() {
+        return weaponDescription;
     }
 }

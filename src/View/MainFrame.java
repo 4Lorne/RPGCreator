@@ -1,5 +1,8 @@
 package View;
 
+import Controller.PlayerController;
+import Model.Creatures.Player;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,11 +16,18 @@ public class MainFrame extends JFrame {
         CharacterCreator characterCreator = new CharacterCreator();
         Battle battle = new Battle();
 
+        //Objects
+        Player player = new Player();
+
         //user controller
+        new PlayerController(player,characterCreator);
+
+        //Setting layout
         setLayout(cardLayout);
 
         //Adding the views to the frame
         add(characterCreator, "creator");
+
         //add(battle,"battle");
 
         //Setting size,close operation, and visibility
