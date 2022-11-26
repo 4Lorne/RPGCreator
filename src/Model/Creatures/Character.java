@@ -6,6 +6,22 @@ public abstract class Character {
     private int agility;
     private int baseAttack;
 
+    public int getHitPoints() {
+        return hitPoints;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public int getAgility() {
+        return agility;
+    }
+
+    public int getBaseAttack() {
+        return baseAttack;
+    }
+
     public Character(){
 
     }

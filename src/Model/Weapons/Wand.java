@@ -7,7 +7,6 @@ public class Wand extends Weapon{
     public Wand(){
 
     }
-
     public Wand(int attackMod,int weight){
         super(attackMod, weight);
     }

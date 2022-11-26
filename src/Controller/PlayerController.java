@@ -2,6 +2,8 @@ package Controller;
 
 import Model.Creatures.Player;
 import Model.Creatures.Warrior;
+import Model.Weapons.Sword;
+import Model.Weapons.Weapon;
 import View.Battle;
 import View.CharacterCreator;
 
@@ -47,9 +49,10 @@ public class PlayerController {
             int attackMod = Integer.parseInt(charCreator.getWeapAtkMod().getText().trim());
             int weight = Integer.parseInt(charCreator.getWeapWeight().getText().trim());
 
-            Player newPlayer = new Player(hp,defense,agility,baseAttack,name,charClass);
+            Weapon weapon = new Weapon(attackMod,weight);
+            Player newPlayer = new Player(hp,defense,agility,baseAttack,name,charClass,weapName);
 
-            this.battle.getStats(newPlayer);
+            this.battle.getStats(newPlayer,weapon);
             //TODO: Build character after all input is taken
             System.out.println(newPlayer.toString());
         });
