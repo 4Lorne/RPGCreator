@@ -11,4 +11,12 @@ public class Player extends Character{
         this.name = name;
         this.charType = charType;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Player{" +
+                "name='" + name + '\'' +
+                ", charType='" + charType + '\'' +
+                '}';
+    }
 }

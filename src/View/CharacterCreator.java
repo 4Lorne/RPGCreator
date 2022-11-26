@@ -1,8 +1,11 @@
 package View;
 
+import Model.Weapons.Staff;
+import Model.Weapons.Sword;
+import Model.Weapons.Wand;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -24,6 +27,7 @@ public class CharacterCreator extends JPanel {
     private JTextArea weaponDescription = new JTextArea(5,20);
 
     //Labels for all the sections
+
     //Title
     private final JLabel charGen = new JLabel("Character Generator");
 
@@ -54,9 +58,9 @@ public class CharacterCreator extends JPanel {
     private JRadioButton wizardSelection = new JRadioButton("Wizard");
     private JRadioButton clericSelection = new JRadioButton("Cleric");
 
-    private JRadioButton daggerSelection = new JRadioButton("Dagger");
+    private JRadioButton staffSelection = new JRadioButton("Staff");
     private JRadioButton swordSelection = new JRadioButton("Sword");
-    private JRadioButton hammerSelection = new JRadioButton("Hammer");
+    private JRadioButton wandSelection = new JRadioButton("Wand");
 
     //Buttons to reroll stats and start final battle
     private JButton reroll = new JButton("Reroll");
@@ -66,6 +70,9 @@ public class CharacterCreator extends JPanel {
     ButtonGroup classSelection = new ButtonGroup();
     ButtonGroup weaponSelection = new ButtonGroup();
 
+    Sword sword = new Sword();
+    Staff staff = new Staff();
+    Wand wand = new Wand();
 
     public CharacterCreator(){
         setLayout(null);
@@ -82,10 +89,11 @@ public class CharacterCreator extends JPanel {
         wizardSelection.setFont(new Font("Serif", Font.PLAIN,20));
         clericSelection.setFont(new Font("Serif", Font.PLAIN,20));
 
-        daggerSelection.setFont(new Font("Serif", Font.PLAIN,20));
+        staffSelection.setFont(new Font("Serif", Font.PLAIN,20));
         swordSelection.setFont(new Font("Serif", Font.PLAIN,20));
-        hammerSelection.setFont(new Font("Serif", Font.PLAIN,20));
+        wandSelection.setFont(new Font("Serif", Font.PLAIN,20));
 
+        //Sets the initial value of the stats
         hitPoints.setFont(new Font("Serif", Font.PLAIN,20));
         defense.setFont(new Font("Serif", Font.PLAIN,20));
         agility.setFont(new Font("Serif", Font.PLAIN,20));
@@ -102,9 +110,9 @@ public class CharacterCreator extends JPanel {
         classSelection.add(wizardSelection);
         classSelection.add(clericSelection);
 
-        weaponSelection.add(daggerSelection);
+        weaponSelection.add(staffSelection);
         weaponSelection.add(swordSelection);
-        weaponSelection.add(hammerSelection);
+        weaponSelection.add(wandSelection);
 
         classDescription.setEditable(false);
         weaponDescription.setEditable(false);
@@ -137,6 +145,7 @@ public class CharacterCreator extends JPanel {
         add(selectAClass);
         //Description
         classDescription.setBounds(50,300,400,50);
+        classDescription.setLineWrap(true);
         add(classDescription);
 
         //Weapon title
@@ -144,17 +153,18 @@ public class CharacterCreator extends JPanel {
         add(selectWeapon);
 
         //Radio buttons
-        daggerSelection.setBounds(50,420,100,25);
-        add(daggerSelection);
+        staffSelection.setBounds(50,420,100,25);
+        add(staffSelection);
         swordSelection.setBounds(50,460,100,25);
         add(swordSelection);
-        hammerSelection.setBounds(50,500,100,25);
-        add(hammerSelection);
+        wandSelection.setBounds(50,500,100,25);
+        add(wandSelection);
 
         selectAWeapon.setBounds(250,460,100,20);
         add(selectAWeapon);
 
         weaponDescription.setBounds(50,530,400,100);
+        weaponDescription.setLineWrap(true);
         add(weaponDescription);
 
 
@@ -205,15 +215,54 @@ public class CharacterCreator extends JPanel {
         clericSelection.addActionListener(actionListener);
     }
 
+    public void displayWeapon(ActionListener actionListener){
+        staffSelection.addActionListener(actionListener);
+        swordSelection.addActionListener(actionListener);
+        wandSelection.addActionListener(actionListener);
+    }
+
     //Changes the image when a radio button is selected
     public void isSelected(){
         if (warriorSelection.isSelected() == true){
-            selectAClass.setBounds(250,220,200,200);
+            setCharStats();
+            selectAClass.setBounds(250,200,64,64);
             selectAClass.setIcon(new ImageIcon(getClass().getResource("../Images/Warrior.png")));
+            classDescription.setText("The Warrior wears strong armor and uses his magic helmet to inspire his allies in battle.");
+
         } else if (wizardSelection.isSelected() == true){
+            selectAClass.setBounds(250,200,64,64);
+            setCharStats();
             selectAClass.setIcon(new ImageIcon(getClass().getResource("../Images/Wizard.png")));
+            classDescription.setText("The Wizard deals damage from a long distance and blasts enemies with powerful spells.");
+
         } else if (clericSelection.isSelected() == true){
+            selectAClass.setBounds(250,200,64,64);
+            setCharStats();
             selectAClass.setIcon(new ImageIcon(getClass().getResource("../Images/Priest.png")));
+            classDescription.setText("The Cleric attacks at long range and can heal himself and his allies.");
+
+        }
+    }
+
+    public void weapIsSelected(){
+        if (staffSelection.isSelected() == true){
+            selectAWeapon.setBounds(250,440,64,64);
+            weapAtkMod.setText(String.valueOf(staff.getAttackMod()));
+            weapWeight.setText(String.valueOf(staff.getWeight()));
+            selectAWeapon.setIcon(new ImageIcon(getClass().getResource("../Images/Staff.png")));
+            weaponDescription.setText("A magical wooden staff topped with a white crystal.");
+        } else if (swordSelection.isSelected() == true){
+            selectAWeapon.setBounds(250,440,64,64);
+            weapAtkMod.setText(String.valueOf(sword.getAttackMod()));
+            weapWeight.setText(String.valueOf(sword.getWeight()));
+            selectAWeapon.setIcon(new ImageIcon(getClass().getResource("../Images/Sword.png")));
+            weaponDescription.setText("A steel short sword.");
+        } else if (wandSelection.isSelected()){
+            selectAWeapon.setBounds(250,440,64,64);
+            weapAtkMod.setText(String.valueOf(wand.getAttackMod()));
+            weapWeight.setText(String.valueOf(wand.getWeight()));
+            selectAWeapon.setIcon(new ImageIcon(getClass().getResource("../Images/Wand.png")));
+            weaponDescription.setText("A wand that casts a simple fire spell.");
         }
     }
 
@@ -226,7 +275,7 @@ public class CharacterCreator extends JPanel {
         startBattle.addActionListener(actionListener);
     }
 
-    //
+    //Returns their class type
     public String getCharClass() {
         if (warriorSelection.isSelected() == true) {
             return warriorSelection.getText();
@@ -239,6 +288,24 @@ public class CharacterCreator extends JPanel {
         }
     }
 
+    public String getWeap(){
+        if (staffSelection.isSelected() == true){
+            return staffSelection.getText();
+        } else if (swordSelection.isSelected() == true){
+            return swordSelection.getText();
+        } else if (wandSelection.isSelected() == true){
+            return wandSelection.getText();
+        } else {
+            return null;
+        }
+    }
+
+    public void setCharStats(){
+        charHp.setText((Integer.toString(ThreadLocalRandom.current().nextInt(50,100+1))));
+        charDef.setText((Integer.toString(ThreadLocalRandom.current().nextInt(50,100+1))));
+        charAgil.setText((Integer.toString(ThreadLocalRandom.current().nextInt(50,100+1))));
+        charBaseAtk.setText((Integer.toString(ThreadLocalRandom.current().nextInt(50,100+1))));
+    }
 
     //Getters
     public JTextField getCharName() {
@@ -277,6 +344,7 @@ public class CharacterCreator extends JPanel {
         return weaponDescription;
     }
 
+    //Setters
     public void setCharHp() {
         this.charHp.setText(Integer.toString(ThreadLocalRandom.current().nextInt(50,100+1)));
     }

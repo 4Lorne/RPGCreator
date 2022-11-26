@@ -16,4 +16,14 @@ public abstract class Character {
         this.agility = agility;
         this.baseAttack = baseAttack;
     }
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "hitPoints=" + hitPoints +
+                ", defense=" + defense +
+                ", agility=" + agility +
+                ", baseAttack=" + baseAttack +
+                '}';
+    }
 }

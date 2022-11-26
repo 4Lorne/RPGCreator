@@ -5,30 +5,41 @@ import Model.Creatures.Player;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class MainFrame extends JFrame {
-    private CardLayout cardLayout;
+    private final CardLayout cardLayout;
 
     public MainFrame(){
         super("RPG Creator");
         cardLayout = new CardLayout();
         //Different views
+        SplashScreen splashScreen = new SplashScreen();
         CharacterCreator characterCreator = new CharacterCreator();
         Battle battle = new Battle();
 
         //Objects
         Player player = new Player();
 
-        //user controller
-        new PlayerController(player,characterCreator);
-
         //Setting layout
         setLayout(cardLayout);
 
-        //Adding the views to the frame
-        add(characterCreator, "creator");
+        //user controller
+        new PlayerController(player,characterCreator,battle);
 
-        //add(battle,"battle");
+        //Adding the views to the frame
+        add(splashScreen, "splash");
+        add(characterCreator, "creator");
+        add(battle,"battle");
+
+        //Changes frames if button is pressed
+        splashScreen.createCharacter(e -> {
+            cardLayout.show(MainFrame.this.getContentPane(),"creator");
+        });
+        characterCreator.startBattle(e -> {
+            cardLayout.show(MainFrame.this.getContentPane(),"battle");
+        });
+
 
         //Setting size,close operation, and visibility
         setSize(720,720);
