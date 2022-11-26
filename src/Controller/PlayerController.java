@@ -49,9 +49,12 @@ public class PlayerController {
 
             Player newPlayer = new Player(hp,defense,agility,baseAttack,name,charClass);
 
+            this.battle.getStats(newPlayer);
             //TODO: Build character after all input is taken
             System.out.println(newPlayer.toString());
         });
+
+
 
 
 
