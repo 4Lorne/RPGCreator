@@ -70,6 +70,7 @@ public class CharacterCreator extends JPanel {
     ButtonGroup classSelection = new ButtonGroup();
     ButtonGroup weaponSelection = new ButtonGroup();
 
+    //Objects
     Sword sword = new Sword();
     Staff staff = new Staff();
     Wand wand = new Wand();
@@ -244,6 +245,7 @@ public class CharacterCreator extends JPanel {
         }
     }
 
+    //Sets weapon information upon click
     public void weapIsSelected(){
         if (staffSelection.isSelected() == true){
             selectAWeapon.setBounds(250,440,64,64);
@@ -288,6 +290,7 @@ public class CharacterCreator extends JPanel {
         }
     }
 
+    //Returns the name of the weapon being used
     public String getWeap(){
         if (staffSelection.isSelected() == true){
             return staffSelection.getText();

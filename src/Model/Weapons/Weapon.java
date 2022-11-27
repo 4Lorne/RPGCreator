@@ -1,14 +1,26 @@
 package Model.Weapons;
 
 public class Weapon {
-    enum WEAPONS{
-        Sword,
-        Staff,
-        Wand
-    }
-
+    //Variables
     private int attackMod;
     private int weight;
+    private String name;
+
+    //Constructor
+    public Weapon(){
+
+    }
+
+    public Weapon(int attackMod,int weight, String name){
+        this.attackMod = attackMod;
+        this.weight = weight;
+        this.name = name;
+    }
+
+    //Getter
+    public String getName() {
+        return name;
+    }
 
     public int getAttackMod() {
         return attackMod;
@@ -16,15 +28,6 @@ public class Weapon {
 
     public int getWeight() {
         return weight;
-    }
-
-    public Weapon(){
-
-    }
-
-    public Weapon(int attackMod,int weight){
-        this.attackMod = attackMod;
-        this.weight = weight;
     }
 
 }

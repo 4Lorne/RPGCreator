@@ -28,9 +28,6 @@ public class Player extends Character{
         return charType;
     }
 
-    public String getWeapon() {
-        return String.valueOf(weapon.getClass());
-    }
 
     //toString
     @Override

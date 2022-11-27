@@ -8,6 +8,7 @@ import View.Battle;
 import View.CharacterCreator;
 
 public class PlayerController {
+    //Objects
     private Player player;
     private CharacterCreator charCreator;
     private Battle battle;
@@ -48,13 +49,15 @@ public class PlayerController {
             int attackMod = Integer.parseInt(charCreator.getWeapAtkMod().getText().trim());
             int weight = Integer.parseInt(charCreator.getWeapWeight().getText().trim());
 
-            Weapon weapon = new Weapon(attackMod,weight);
+            //Constructor
+            Weapon weapon = new Weapon(attackMod,weight,weapName);
             Player newPlayer = new Player(hp,defense,agility,baseAttack,name,charClass,weapon);
 
+            //Adds things to the battle screen
             this.battle.getStats(newPlayer,weapon);
             this.battle.setClass(newPlayer);
             this.battle.setMonster();
-            System.out.println(newPlayer.toString());
+
         });
 
 

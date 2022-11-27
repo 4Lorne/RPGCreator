@@ -52,7 +52,7 @@ public class Battle extends JPanel {
                 "Class: %s\n" +
                 "HP: %d\tDefense:%d\tAgility:%d\tBase Attack:%d\n"+
                 "Weapon: %s\t\tWeight: %d\tAttack Mod: %d"
-                ,player.getName(),player.getCharType(),player.getHitPoints(),player.getDefense(),player.getAgility(),player.getBaseAttack(),player.getWeapon(),weapon.getWeight(),weapon.getAttackMod()));
+                ,player.getName(),player.getCharType(),player.getHitPoints(),player.getDefense(),player.getAgility(),player.getBaseAttack(),weapon.getName(),weapon.getWeight(),weapon.getAttackMod()));
     }
 
 
