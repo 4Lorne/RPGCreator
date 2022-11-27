@@ -39,7 +39,6 @@ public class PlayerController {
             String name = this.charCreator.getCharName().getText().trim();
             String charClass = this.charCreator.getCharClass();
             String weapName = this.charCreator.getWeap();
-            //add error handling
 
             int hp = Integer.parseInt(charCreator.getCharHp().getText().trim());
             int defense = Integer.parseInt(charCreator.getCharDef().getText().trim());
@@ -50,14 +49,13 @@ public class PlayerController {
             int weight = Integer.parseInt(charCreator.getWeapWeight().getText().trim());
 
             Weapon weapon = new Weapon(attackMod,weight);
-            Player newPlayer = new Player(hp,defense,agility,baseAttack,name,charClass,weapName);
+            Player newPlayer = new Player(hp,defense,agility,baseAttack,name,charClass,weapon);
 
             this.battle.getStats(newPlayer,weapon);
-            //TODO: Build character after all input is taken
+            this.battle.setClass(newPlayer);
+            this.battle.setMonster();
             System.out.println(newPlayer.toString());
         });
-
-
 
 
 

@@ -2,6 +2,7 @@ package View;
 
 import Controller.PlayerController;
 import Model.Creatures.Player;
+import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import java.awt.*;
@@ -39,7 +40,11 @@ public class MainFrame extends JFrame {
         characterCreator.startBattle(e -> {
             cardLayout.show(MainFrame.this.getContentPane(),"battle");
         });
-
+        //Restarts the GUI
+        battle.newGame(e->{
+            dispose();
+            new MainFrame();
+        });
 
         //Setting size,close operation, and visibility
         setSize(720,720);

@@ -1,8 +1,6 @@
 package Model.Weapons;
 
 public class Weapon {
-    private WEAPONS weapon;
-
     enum WEAPONS{
         Sword,
         Staff,

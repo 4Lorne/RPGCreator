@@ -5,11 +5,12 @@ import Model.Weapons.Weapon;
 public class Warrior extends Player{
 
     //Add weapon to constructor
-    public Warrior(int hitPoints, int defense, int agility, int baseAttack, String name, String charType, String weapon){
+    public Warrior(int hitPoints, int defense, int agility, int baseAttack, String name, String charType, Weapon weapon){
         super(hitPoints, defense, agility, baseAttack, name, charType,weapon);
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
