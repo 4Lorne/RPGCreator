@@ -51,8 +51,8 @@ public class Battle extends JPanel {
         results.setText(String.format("Player: %s \n -------------------\n" +
                 "Class: %s\n" +
                 "HP: %d\tDefense:%d\tAgility:%d\tBase Attack:%d\n"+
-                "Weapon: %s\t\tWeight: %d\tAttack Mod: %d"
-                ,player.getName(),player.getCharType(),player.getHitPoints(),player.getDefense(),player.getAgility(),player.getBaseAttack(),weapon.getName(),weapon.getWeight(),weapon.getAttackMod()));
+                "Weapon: %s\t\tWeight: %d\tAttack Mod: %d\tSpecial Ability:%s"
+                ,player.getName(),player.getCharType(),player.getHitPoints(),player.getDefense(),player.getAgility(),player.getBaseAttack(),weapon.getName(),weapon.getWeight(),weapon.getAttackMod(),player.getSpecialAbility()));
     }
 
 

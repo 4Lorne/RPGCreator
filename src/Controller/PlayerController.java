@@ -1,7 +1,9 @@
 package Controller;
 
+import Model.Creatures.Cleric;
 import Model.Creatures.Player;
 import Model.Creatures.Warrior;
+import Model.Creatures.Wizard;
 import Model.Weapons.Sword;
 import Model.Weapons.Weapon;
 import View.Battle;
@@ -49,13 +51,24 @@ public class PlayerController {
             int attackMod = Integer.parseInt(charCreator.getWeapAtkMod().getText().trim());
             int weight = Integer.parseInt(charCreator.getWeapWeight().getText().trim());
 
-            //Constructor
+
             Weapon weapon = new Weapon(attackMod,weight,weapName);
-            Player newPlayer = new Player(hp,defense,agility,baseAttack,name,charClass,weapon);
+            //Constructor
+            if (charClass.contains("Warrior")){
+                Player newWarrior = new Warrior(hp,defense,agility,baseAttack,name,charClass,weapon,"Berserk");
+                this.battle.getStats(newWarrior,weapon);
+                this.battle.setClass(newWarrior);
+            } else if (charClass.contains("Cleric")){
+                Player newCleric = new Cleric(hp,defense,agility,baseAttack,name,charClass, weapon,"Prayer");
+                this.battle.getStats(newCleric,weapon);
+                this.battle.setClass(newCleric);
+            } else if (charClass.contains("Wizard")){
+                Player newWizard = new Wizard(hp,defense,agility,baseAttack,name,charClass,weapon,"Spell Bomb");
+                this.battle.getStats(newWizard,weapon);
+                this.battle.setClass(newWizard);
+            }
 
             //Adds things to the battle screen
-            this.battle.getStats(newPlayer,weapon);
-            this.battle.setClass(newPlayer);
             this.battle.setMonster();
 
         });

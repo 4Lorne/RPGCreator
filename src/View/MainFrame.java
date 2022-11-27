@@ -20,7 +20,12 @@ public class MainFrame extends JFrame {
         Battle battle = new Battle();
 
         //Objects
-        Player player = new Player();
+        Player player = new Player() {
+            @Override
+            public String getSpecialAbility() {
+                return null;
+            }
+        };
 
         //Setting layout
         setLayout(cardLayout);

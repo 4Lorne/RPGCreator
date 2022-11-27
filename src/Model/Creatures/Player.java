@@ -2,7 +2,7 @@ package Model.Creatures;
 
 import Model.Weapons.Weapon;
 
-public class Player extends Character{
+public abstract class Player extends Character{
     //Variables
     private String name;
     private String charType;
@@ -37,4 +37,6 @@ public class Player extends Character{
                 ", charType='" + charType + '\'' +
                 '}';
     }
+
+    public abstract String getSpecialAbility();
 }
