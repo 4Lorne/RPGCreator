@@ -9,10 +9,14 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class MainFrame extends JFrame {
-    private final CardLayout cardLayout;
+    private CardLayout cardLayout;
 
     public MainFrame(){
-        super("RPG Creator");
+        init();
+    }
+
+    public void init(){
+        setTitle("RPG Creator");
         cardLayout = new CardLayout();
         //Different views
         SplashScreen splashScreen = new SplashScreen();
